@@ -6,7 +6,6 @@ config = {
 	prefix: "b.",
 };
 
-// Create a new DisTube
 const distube = new DisTube(client, { searchSongs: true, emitNewSongOnly: true });
 
 client.on('ready', () => {
