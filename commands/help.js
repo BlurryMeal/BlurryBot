@@ -14,8 +14,8 @@ module.exports = {
 			.addFields(
 				{ name: 'Commands', value: 'A Full List of commands have been mentioned in the next two pages.' },
 				{ name: 'No Sir', value: 'There is no premium section for this bot, all features including filters are free for all users!' },
-				{ name: 'Bot Invite', value: 'You can invite BlurryBot to your discord server through https://blurrybot.xyz' },
-				{ name: 'Website', value: 'For more information you can visit our website at https://blurrybot.xyz' },
+				{ name: 'Bot Invite', value: 'You can invite BlurryBot to your discord server through https://top.gg/bot/853926353422647326' },
+				{ name: 'Website', value: 'For more information you can visit our website at **(Under Construction)**' },
 			)
 		
 		const page2 = new Discord.MessageEmbed()
