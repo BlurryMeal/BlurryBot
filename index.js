@@ -1,10 +1,16 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
+const { AutoPoster } = require('topgg-autoposter')
 const DisTube = require('distube'),
 config = {
 	prefix: "b.",
 };
+
+AutoPoster("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg1MzkyNjM1MzQyMjY0NzMyNiIsImJvdCI6dHJ1ZSwiaWF0IjoxNjMwMDUwMzIwfQ.pZ6OegtdRjGhh-GIVrn7tU4nxY3BXKvMHh7bHcKF_jg", client)
+  .on('posted', () => {
+    console.log('Posted stats to Top.gg!')
+  })
 
 const distube = new DisTube(client, { searchSongs: true, emitNewSongOnly: true });
 
