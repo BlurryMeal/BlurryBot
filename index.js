@@ -127,11 +127,18 @@ const status = (queue) => `Volume: \`${queue.volume}%\` | Filter: \`${queue.filt
 
 // DisTube event listeners, more in the documentation page
 distube
-
-.on("playSong", (message, queue, song) => 
-message.channel.send(
-	`Playing \`${song.name}\` - \`${song.formattedDuration}\`\nRequested by: ${song.user}\n${status(queue)}`
-))
+.on("playSong", (message,queue, song) => {
+	const exampleEmbed = new Discord.MessageEmbed()
+	.setColor('#9966CC')
+	.setTitle('Currently Playing')
+	.addFields(
+		{ name: 'Song Name', value: song.name },
+		{ name: 'Duration', value: song.formattedDuration, inline:true },
+		{ name: 'Requested By', value: song.user, inline:true },
+		{ name: 'Status', value: status(queue)},
+	)
+	message.channel.send(exampleEmbed);
+})
 .on("addSong", (message, queue, song) => message.channel.send(
 	`Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user}`
 ))
