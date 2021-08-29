@@ -28,11 +28,11 @@ if (command == "play")
 	distube.play(message, args.join(" "));
 
 
-
-if (["repeat", "loop"].includes(command))
-	distube.setRepeatMode(message, parseInt(args[0]));
 	
 if (command == "loop" || command == "repeat") {
+	let queue = distube.getQueue(message);
+	if (!queue) return message.channel.send("There is no queue.")
+	distube.setRepeatMode(message, parseInt(args[0]));
 	const exampleEmbed = new Discord.MessageEmbed()
 	.setColor('#9966CC')
 	.setTitle('Current Song has been Looped!')
@@ -41,6 +41,8 @@ if (command == "loop" || command == "repeat") {
 }
 
 if (command == "stop") {
+	let queue = distube.getQueue(message);
+	if (!queue) return message.channel.send("There is no queue.")
 	distube.stop(message);
 	const exampleEmbed = new Discord.MessageEmbed()
 	.setColor('#9966CC')
@@ -49,6 +51,8 @@ if (command == "stop") {
 	message.channel.send(exampleEmbed);
 }
 if (command == "skip") {
+	let queue = distube.getQueue(message);
+	if (!queue) return message.channel.send("There is no queue.")
 	const exampleEmbed = new Discord.MessageEmbed()
 	.setColor('#9966CC')
 	.setTitle('Song has been skipped!')
@@ -59,9 +63,10 @@ if (command == "skip") {
 if (command == "skip")
 	distube.skip(message);
 
-if (command == "volume")
-distube.setVolume(message, args[0]);
 if (command == "volume") {
+	let queue = distube.getQueue(message);
+	if (!queue) return message.channel.send("There is no queue.")
+	distube.setVolume(message, args[0]);
 	const exampleEmbed = new Discord.MessageEmbed()
 	.setColor('#9966CC')
 	.setTitle(`Volume has been set to ${args[0]}% `)
@@ -69,13 +74,17 @@ if (command == "volume") {
 	message.channel.send(exampleEmbed);
 }
 
-if (command == "jump")
-distube.jump(message, parseInt(args[0]-1));
+if (command == "jump") {
+	let queue = distube.getQueue(message);
+	if (!queue) return message.channel.send("There is no queue.")
+	distube.jump(message, parseInt(args[0]-1));
+}
 
-if (command == "shuffle")
-distube.shuffle(message);
 
 if (command == "shuffle") {
+	let queue = distube.getQueue(message);
+	if (!queue) return message.channel.send("There is no queue.")
+	distube.shuffle(message);
 	const exampleEmbed = new Discord.MessageEmbed()
 	.setColor('#9966CC')
 	.setTitle(`Queue has been shuffled!`)
@@ -83,11 +92,10 @@ if (command == "shuffle") {
 	message.channel.send(exampleEmbed);
 }
 
-if (command == "pause")
-distube.pause(message);
-
-
 if (command == "pause") {
+	let queue = distube.getQueue(message);
+	if (!queue) return message.channel.send("There is no queue.")
+	distube.pause(message);
 	const exampleEmbed = new Discord.MessageEmbed()
 	.setColor('#9966CC')
 	.setTitle(`Current Song has been paused!`)
@@ -96,10 +104,10 @@ if (command == "pause") {
 }
 
 
-if (command == "resume")
-distube.resume(message);
-
 if (command == "resume") {
+	let queue = distube.getQueue(message);
+	if (!queue) return message.channel.send("There is no queue.")
+	distube.resume(message);
 	const exampleEmbed = new Discord.MessageEmbed()
 	.setColor('#9966CC')
 	.setTitle(`Current Song has been resumed!`)
@@ -109,6 +117,7 @@ if (command == "resume") {
 
 if (command == "queue") {
 	let queue = distube.getQueue(message);
+	if (!queue) return message.channel.send("There is no queue.")
 	const exampleEmbed = new Discord.MessageEmbed()
 	.setColor('#9966CC')
 	.setTitle('Current Queue')
