@@ -141,7 +141,7 @@ if ([`3d`, `bassboost`, `echo`, `karaoke`, `nightcore`, `vaporwave`, `reverse`, 
 // Queue status template
 const status = (queue) => `Volume: \`${queue.volume}%\` | Filter: \`${queue.filter || "Off"}\` | Loop: \`${queue.repeatMode ? queue.repeatMode == 2 ? "All Queue" : "This Song" : "Off"}\` | Autoplay: \`${queue.autoplay ? "On" : "Off"}\``;
 
-// DisTube event listeners, more in the documentation pag
+// DisTube event listeners, more in the documentation page
 distube
 .on("playSong", (message,queue, song) => {
 	const exampleEmbed = new Discord.MessageEmbed()
