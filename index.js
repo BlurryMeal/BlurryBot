@@ -27,6 +27,8 @@ const command = args.shift();
 if (command == "play")
 	distube.play(message, args.join(" "));
 
+
+
 if (["repeat", "loop"].includes(command))
 	distube.setRepeatMode(message, parseInt(args[0]));
 	
@@ -155,6 +157,9 @@ distube
 ))
 // DisTubeOptions.searchSongs = true
 .on("searchResult", (message, result) => {
+	if (!message.member.guild.me.hasPermission(["CONNECT"])) return message.channel.send("I don't have the permissions to join the voice channel.")
+	if (!message.member.guild.me.hasPermission(["SPEAK"])) return message.channel.send("I don't have the permissions to speak in the voice channel.")
+	if (!message.member.guild.me.hasPermission(["SEND_MESSAGES"])) return message.channel.send("I don't have the permissions to send messages.")
 	let i = 0;
 	const exampleEmbed = new Discord.MessageEmbed()
 	.setColor('#9966CC')
