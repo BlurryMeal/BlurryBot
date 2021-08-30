@@ -12,9 +12,11 @@ module.exports = {
 			.setDescription('BlurryBot is a fully fledged Music Bot developed by BlurryMeal. To get started join a voice channel and play a song by typing `b.play (Song Name)` ')
 			.setThumbnail('https://i.imgur.com/lIch4Lq.png')
 			.addFields(
+				{ name: 'Vote', value: 'Vote for BlurryBot at https://top.gg/bot/853926353422647326 to support our services.' },
 				{ name: 'Commands', value: 'A Full List of commands have been mentioned in the next two pages.' },
 				{ name: 'No Sir', value: 'There is no premium section for this bot, all features including filters are free for all users!' },
 				{ name: 'Bot Invite', value: 'You can invite BlurryBot to your discord server through https://top.gg/bot/853926353422647326' },
+				{ name: 'Community/Support Server', value: 'You can join our Community and Support Discord Server through https://discord.gg/AqxbSPCrmA' },
 				{ name: 'Website', value: 'For more information you can visit our website at **(Under Construction)**' },
 			)
 		
@@ -49,9 +51,9 @@ module.exports = {
 				{ name: 'b.karaoke', value: 'Always wanted to sing on discord? Well now is your chance!' },
 				{ name: 'b.reverse', value: 'This Filter reverses the audio of the current song.' },
 				{ name: 'b.surround', value: 'This Filter gives a Surround Sound effect for the current song.' },
-				{ name: 'b.earwax', value: 'Never had earwax in your ears?' },
 				{ name: 'b.bassboost', value: 'Increase the Bass of the current song.' },
-				{ name: 'b.nightcore', value: 'This FIlter increases the pitch and pace of the current song.' },
+				{ name: 'b.earwax', value: 'Never had earwax in your ears?' },
+				{ name: 'b.nightcore', value: 'This Filter increases the pitch and pace of the current song.' },
 				{ name: 'b.vaporwave', value: 'This Filter makes the current song sound like as if it was made in the 1980s.' },
 			)
 	
@@ -59,12 +61,12 @@ module.exports = {
 		const pages = [
 			page1,
 			page2,
-			page3
+			page3,
 		]
 
 		const emoji = ["⏪", "⏩"]
 
-		const timeout = '30000'
+		const timeout = '60000'
 
 		pagination(message, pages, emoji, timeout)
 	

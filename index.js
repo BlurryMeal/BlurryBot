@@ -7,6 +7,7 @@ config = {
 	prefix: "b.",
 };
 
+
 AutoPoster("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg1MzkyNjM1MzQyMjY0NzMyNiIsImJvdCI6dHJ1ZSwiaWF0IjoxNjMwMDUwMzIwfQ.pZ6OegtdRjGhh-GIVrn7tU4nxY3BXKvMHh7bHcKF_jg", client)
   .on('posted', () => {
     console.log('Posted stats to Top.gg!')
@@ -155,6 +156,7 @@ distube
 	)
 	message.channel.send(exampleEmbed);
 })
+
 .on("addSong", (message, queue, song) => message.channel.send(
 	`Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user}`
 ))
@@ -168,7 +170,7 @@ distube
 .on("searchResult", (message, result) => {
 	if (!message.member.guild.me.hasPermission(["CONNECT"])) return message.channel.send("I don't have the permissions to join the voice channel.")
 	if (!message.member.guild.me.hasPermission(["SPEAK"])) return message.channel.send("I don't have the permissions to speak in the voice channel.")
-	if (!message.member.guild.me.hasPermission(["SEND_MESSAGES"])) return message.channel.send("I don't have the permissions to send messages.")
+	if (!message.member.guild.me.hasPermission(["SEND_MESSAGES"])) return console.log("I don't have the permissions to send messages.")
 	let i = 0;
 	const exampleEmbed = new Discord.MessageEmbed()
 	.setColor('#9966CC')
