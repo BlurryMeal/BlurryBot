@@ -258,4 +258,4 @@ client.once('ready', () => {
 
 
 
-client.login(process.env.BLURRYBOT_TOKEN);
+client.login("ODUzOTI2MzUzNDIyNjQ3MzI2.YMce4w.bpeQBhiHQu4uhpKqd7WCwhZ5tdg");
