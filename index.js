@@ -1,19 +1,11 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
-const { SpotifyPlugin } = require("@distube/spotify");
 const { AutoPoster } = require('topgg-autoposter')
 const DisTube = require('distube'),
 config = {
 	prefix: "b.",
 };
-const distube2 = new DisTube(client, {
-	searchSongs: 10,
-	emitNewSongOnly: true,
-	plugins: [new SpotifyPlugin()],
-	
-  });
-
 
 
 AutoPoster("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg1MzkyNjM1MzQyMjY0NzMyNiIsImJvdCI6dHJ1ZSwiaWF0IjoxNjMwMDUwMzIwfQ.pZ6OegtdRjGhh-GIVrn7tU4nxY3BXKvMHh7bHcKF_jg", client)
@@ -35,9 +27,6 @@ const command = args.shift();
 
 if (command == "play")
 	distube.play(message, args.join(" "));
-	if (args[0].includes("http")) {
-		distube2.play(message, args.join(" "));
-	}
 
 
 	
