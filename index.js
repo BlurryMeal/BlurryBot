@@ -26,94 +26,147 @@ const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
 const command = args.shift();
 
 if (command == "play")
-	distube.play(message, args.join(" "));
+	if (!message.member.voice.channel) {
+		message.channel.send("You are not in a voice channel.")
+	}
+	if (message.member.voice.channel) {
+		distube.play(message, args.join(" "));
+	}
 
 
 	
 if (command == "loop" || command == "repeat") {
-	let queue = distube.getQueue(message);
-	if (!queue) return message.channel.send("There is no queue.")
-	distube.setRepeatMode(message, parseInt(args[0]));
-	const exampleEmbed = new Discord.MessageEmbed()
-	.setColor('#9966CC')
-	.setTitle('Current Song has been Looped!')
+	if (!message.member.voice.channel) {
+		message.channel.send("You are not in a voice channel.")
+	}
+	if (message.member.voice.channel) {
+		let queue = distube.getQueue(message);
+		if (!queue) return message.channel.send("There is no queue.")
+		distube.setRepeatMode(message, parseInt(args[0]));
+		const exampleEmbed = new Discord.MessageEmbed()
+		.setColor('#9966CC')
+		.setTitle('Current Song has been Looped!')
+	
+		message.channel.send(exampleEmbed);
+	}
 
-	message.channel.send(exampleEmbed);
 }
 
 if (command == "stop") {
-	let queue = distube.getQueue(message);
-	if (!queue) return message.channel.send("There is no queue.")
-	distube.stop(message);
-	const exampleEmbed = new Discord.MessageEmbed()
-	.setColor('#9966CC')
-	.setTitle('Bot has left the voice channel!')
+	if (!message.member.voice.channel) {
+		message.channel.send("You are not in a voice channel.")
+	}
+	if (message.member.voice.channel) {
+		let queue = distube.getQueue(message);
+		if (!queue) return message.channel.send("There is no queue.")
+		distube.stop(message);
+		const exampleEmbed = new Discord.MessageEmbed()
+		.setColor('#9966CC')
+		.setTitle('Bot has left the voice channel!')
+	
+		message.channel.send(exampleEmbed);
+	}
 
-	message.channel.send(exampleEmbed);
 }
 if (command == "skip") {
-	let queue = distube.getQueue(message);
-	if (!queue) return message.channel.send("There is no queue.")
-	const exampleEmbed = new Discord.MessageEmbed()
-	.setColor('#9966CC')
-	.setTitle('Song has been skipped!')
+	if (!message.member.voice.channel) {
+		message.channel.send("You are not in a voice channel.")
+	}
+	if (message.member.voice.channel) {
+		distube.skip(message);
+		let queue = distube.getQueue(message);
+		if (!queue) return message.channel.send("There is no queue.")
+		const exampleEmbed = new Discord.MessageEmbed()
+		.setColor('#9966CC')
+		.setTitle('Song has been skipped!')
+	
+		message.channel.send(exampleEmbed);
+	}
 
-	message.channel.send(exampleEmbed);
 }
 
-if (command == "skip")
-	distube.skip(message);
+	
 
 if (command == "volume") {
-	let queue = distube.getQueue(message);
-	if (!queue) return message.channel.send("There is no queue.")
-	distube.setVolume(message, args[0]);
-	const exampleEmbed = new Discord.MessageEmbed()
-	.setColor('#9966CC')
-	.setTitle(`Volume has been set to ${args[0]}% `)
+	if (!message.member.voice.channel) {
+		message.channel.send("You are not in a voice channel.")
+	}
+	if (message.member.voice.channel) {
+		let queue = distube.getQueue(message);
+		if (!queue) return message.channel.send("There is no queue.")
+		distube.setVolume(message, args[0]);
+		const exampleEmbed = new Discord.MessageEmbed()
+		.setColor('#9966CC')
+		.setTitle(`Volume has been set to ${args[0]}% `)
+	
+		message.channel.send(exampleEmbed);
+	}
 
-	message.channel.send(exampleEmbed);
 }
 
 if (command == "jump") {
-	let queue = distube.getQueue(message);
-	if (!queue) return message.channel.send("There is no queue.")
-	distube.jump(message, parseInt(args[0]-1));
+	if (!message.member.voice.channel) {
+		message.channel.send("You are not in a voice channel.")
+	}
+	if (message.member.voice.channel) {
+		let queue = distube.getQueue(message);
+		if (!queue) return message.channel.send("There is no queue.")
+		distube.jump(message, parseInt(args[0]-1));
+	}
+
 }
 
 
 if (command == "shuffle") {
-	let queue = distube.getQueue(message);
-	if (!queue) return message.channel.send("There is no queue.")
-	distube.shuffle(message);
-	const exampleEmbed = new Discord.MessageEmbed()
-	.setColor('#9966CC')
-	.setTitle(`Queue has been shuffled!`)
+	if (!message.member.voice.channel) {
+		message.channel.send("You are not in a voice channel.")
+	}
+	if (message.member.voice.channel) {
+		let queue = distube.getQueue(message);
+		if (!queue) return message.channel.send("There is no queue.")
+		distube.shuffle(message);
+		const exampleEmbed = new Discord.MessageEmbed()
+		.setColor('#9966CC')
+		.setTitle(`Queue has been shuffled!`)
+	
+		message.channel.send(exampleEmbed);
+	}
 
-	message.channel.send(exampleEmbed);
 }
 
 if (command == "pause") {
-	let queue = distube.getQueue(message);
-	if (!queue) return message.channel.send("There is no queue.")
-	distube.pause(message);
-	const exampleEmbed = new Discord.MessageEmbed()
-	.setColor('#9966CC')
-	.setTitle(`Current Song has been paused!`)
+	if (!message.member.voice.channel) {
+		message.channel.send("You are not in a voice channel.")
+	}
+	if (message.member.voice.channel) {
+		let queue = distube.getQueue(message);
+		if (!queue) return message.channel.send("There is no queue.")
+		distube.pause(message);
+		const exampleEmbed = new Discord.MessageEmbed()
+		.setColor('#9966CC')
+		.setTitle(`Current Song has been paused!`)
+	
+		message.channel.send(exampleEmbed);
+	}
 
-	message.channel.send(exampleEmbed);
 }
 
 
 if (command == "resume") {
-	let queue = distube.getQueue(message);
-	if (!queue) return message.channel.send("There is no queue.")
-	distube.resume(message);
-	const exampleEmbed = new Discord.MessageEmbed()
-	.setColor('#9966CC')
-	.setTitle(`Current Song has been resumed!`)
+	if (!message.member.voice.channel) {
+		message.channel.send("You are not in a voice channel.")
+	}
+	if (message.member.voice.channel) {
+		let queue = distube.getQueue(message);
+		if (!queue) return message.channel.send("There is no queue.")
+		distube.resume(message);
+		const exampleEmbed = new Discord.MessageEmbed()
+		.setColor('#9966CC')
+		.setTitle(`Current Song has been resumed!`)
+	
+		message.channel.send(exampleEmbed);
+	}
 
-	message.channel.send(exampleEmbed);
 }
 
 if (command == "queue") {
@@ -129,13 +182,19 @@ if (command == "queue") {
 }
 
 if ([`3d`, `bassboost`, `echo`, `karaoke`, `nightcore`, `vaporwave`, `reverse`, `surround`, `earwax`].includes(command)) {
-	let filter = distube.setFilter(message, command);
-	const exampleEmbed = new Discord.MessageEmbed()
-	.setColor('#9966CC')
-	.setTitle('Current Filter')
-	.setDescription(filter || 'Off')
+	if (!message.member.voice.channel) {
+		message.channel.send("You are not in a voice channel.")
+	}
+	if (message.member.voice.channel) {
+		let filter = distube.setFilter(message, command);
+		const exampleEmbed = new Discord.MessageEmbed()
+		.setColor('#9966CC')
+		.setTitle('Current Filter')
+		.setDescription(filter || 'Off')
+	
+		message.channel.send(exampleEmbed);
+	}
 
-	message.channel.send(exampleEmbed);
 }
 });
 
