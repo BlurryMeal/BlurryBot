@@ -8,7 +8,7 @@ config = {
 };
 
 
-AutoPoster("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg1MzkyNjM1MzQyMjY0NzMyNiIsImJvdCI6dHJ1ZSwiaWF0IjoxNjMwMDUwMzIwfQ.pZ6OegtdRjGhh-GIVrn7tU4nxY3BXKvMHh7bHcKF_jg", client)
+AutoPoster(process.env.TOPGG_TOKEN, client)
   .on('posted', () => {
     console.log('Posted stats to Top.gg!')
   })
@@ -258,4 +258,4 @@ client.once('ready', () => {
 
 
 
-client.login("ODUzOTI2MzUzNDIyNjQ3MzI2.YMce4w.bpeQBhiHQu4uhpKqd7WCwhZ5tdg");
+client.login(process.env.BLURRYBOT_TOKEN);
