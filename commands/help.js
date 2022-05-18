@@ -17,7 +17,7 @@ module.exports = {
 				{ name: 'No Sir', value: 'There is no premium section for this bot, all features including filters are free for all users!' },
 				{ name: 'Bot Invite', value: 'You can invite BlurryBot to your discord server through https://top.gg/bot/853926353422647326' },
 				{ name: 'Community/Support Server', value: 'You can join our Community and Support Discord Server through https://discord.gg/AqxbSPCrmA' },
-				{ name: 'Website', value: 'For more information you can visit our website at **(Under Construction)**' },
+				{ name: 'Website', value: 'For more information you can visit our website at https://blurrybot.vercel.app/' },
 			)
 		
 		const page2 = new Discord.MessageEmbed()
